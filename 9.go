@@ -20,8 +20,8 @@ func pythagoreanTriplet() int {
         for t.b = t.c - 1; t.b >= 0; t.b-- {
             for t.a = t.b - 1; t.a >= 0; t.a-- {
                 if
-                    math.Pow(float64(t.a), 2) + math.Pow(float64(t.b), 2) == math.Pow(float64(t.c), 2) &&
-                    t.a + t.b + t.c == 1000 {
+                    t.a + t.b + t.c == 1000 &&
+                    math.Pow(float64(t.a), 2) + math.Pow(float64(t.b), 2) == math.Pow(float64(t.c), 2) {
                         return t.a * t.b * t.c
                  }
 
