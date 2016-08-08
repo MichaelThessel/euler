@@ -50,31 +50,31 @@ func gridProd() int {
 }
 
 func gridProdLine(grid [20][20]int) int {
-    maxProd := 0
+    max := 0
     for _, row := range(grid) {
         for i := 0; i <= len(row) - 4; i++ {
             prod := row[i] * row[i + 1] * row[i + 2] * row[i + 3]
-            if prod > maxProd {
-                maxProd = prod
+            if prod > max {
+                max = prod
             }
         }
     }
 
-    return maxProd
+    return max
 }
 
 func gridProdDiag(grid [20][20]int) int {
-    maxProd := 0
+    max := 0
     for i := 0; i <= len(grid) - 4; i++ {
         for j := 0; j <= len(grid[i]) - 4; j++ {
             prod := grid[i][j] * grid[i + 1][j + 1] * grid[i + 2][j + 2] * grid[i + 3][j + 3]
-            if prod > maxProd {
-                maxProd = prod
+            if prod > max {
+                max = prod
             }
         }
     }
 
-    return maxProd
+    return max
 }
 
 func rotate(grid [20][20]int) [20][20]int {
