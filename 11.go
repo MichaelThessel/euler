@@ -27,17 +27,21 @@ var grid = [20][20]int {
     {01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48},
 }
 
+var rotGrid = [20][20]int{}
+
 func main() {
     fmt.Println(gridProd());
 }
 
 func gridProd() int {
+    rotGrid = rotate(grid)
+
     var solutions = [4]int{}
 
     solutions[0] = gridProdLine(grid)
-    solutions[1] = gridProdLine(rotate(grid))
+    solutions[1] = gridProdLine(rotGrid)
     solutions[2] = gridProdDiag(grid)
-    solutions[3] = gridProdDiag(rotate(grid))
+    solutions[3] = gridProdDiag(rotGrid)
 
     max := 0
     for _, prod := range solutions {
@@ -79,6 +83,7 @@ func gridProdDiag(grid [20][20]int) int {
 
 func rotate(grid [20][20]int) [20][20]int {
     var rotGrid = [20][20]int{}
+
     for i := 0; i < len(grid); i++ {
         for j := 0; j < len(grid[i]); j++ {
             rotGrid[i][j] = grid[len(grid[i]) - 1 - j][i]
